@@ -2,7 +2,7 @@ CXX = c++
 CXXFLAGS = -Iinclude -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = MSC_OCF
+NAME = NWT
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 10:54:11 by julian            #+#    #+#             */
-/*   Updated: 2025/12/27 18:02:39 by julian           ###   ########.fr       */
+/*   Updated: 2025/12/29 10:34:21 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
     Fixed();                    // Constructeur par défaut
     Fixed(const int);           // Constructeur avec un int
     Fixed(const Fixed& other);  // Constructeur de copie
+    
     Fixed& operator=(const Fixed& other); // Opérateur d’affectation
     
     // Opérateurs de comparaison
@@ -66,17 +67,21 @@ public:
     Fixed& operator--();    // pré-décrémentation
     Fixed operator--(int);  // post-décrémentation
     
-    ~Fixed();                   // Destructeur
-
+    
     int  getRawBits(void) const;
     void setRawBits(int const raw);
-    // Fonctions min / max
+    float toFloat() const;
+    int toInt() const;
+    
     static Fixed&       min(Fixed& a, Fixed& b);
     static const Fixed& min(const Fixed& a, const Fixed& b);
-
+    
     static Fixed&       max(Fixed& a, Fixed& b);
     static const Fixed& max(const Fixed& a, const Fixed& b);
-
+    
+    ~Fixed();                   // Destructeur
 };
+
+std::ostream& operator<<(std:: ostream& os, const Fixed& fixed);
 
 #endif
