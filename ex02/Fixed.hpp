@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 10:54:11 by julian            #+#    #+#             */
-/*   Updated: 2025/12/29 10:34:21 by julian           ###   ########.fr       */
+/*   Updated: 2026/01/03 16:45:40 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,10 @@ public:
     Fixed operator/(const Fixed& other) const;
 
     // Incrémentation / décrémentation
-    Fixed& operator++();    // pré-incrémentation
-    Fixed operator++(int);  // post-incrémentation
-    Fixed& operator--();    // pré-décrémentation
-    Fixed operator--(int);  // post-décrémentation
-
-    bool operator>(const Fixed& other) const;
-    bool operator<(const Fixed& other) const;
-    bool operator>=(const Fixed& other) const;
-    bool operator<=(const Fixed& other) const;
-    bool operator==(const Fixed& other) const;
-    bool operator!=(const Fixed& other) const;
-
-    // Opérateurs arithmétiques
-    Fixed operator+(const Fixed& other) const;
-    Fixed operator-(const Fixed& other) const;
-    Fixed operator*(const Fixed& other) const;
-    Fixed operator/(const Fixed& other) const;
-
-    // Incrémentation / décrémentation
-    Fixed& operator++();    // pré-incrémentation
-    Fixed operator++(int);  // post-incrémentation
-    Fixed& operator--();    // pré-décrémentation
-    Fixed operator--(int);  // post-décrémentation
+    Fixed& operator++();   
+    Fixed operator++(int); 
+    Fixed& operator--();   
+    Fixed operator--(int); 
     
     
     int  getRawBits(void) const;

@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 10:33:11 by julian            #+#    #+#             */
-/*   Updated: 2025/12/29 10:35:34 by julian           ###   ########.fr       */
+/*   Updated: 2026/01/03 16:49:33 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 Fixed::Fixed () : _value(0)
 {
     std::cout << "Default constructor called" << std::endl;
+}
+Fixed::Fixed (int n)
+{
+    this->_value = n;
 }
 
 Fixed::Fixed (const Fixed& other)
@@ -63,13 +67,112 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
     return os;
 }
 
-bool operator>(const Fixed& other) const;
+bool Fixed::operator>(const Fixed& other) const
 {
-    
+    return this->_value > other._value;
 }
-bool operator<(const Fixed& other) const;
-    bool operator>=(const Fixed& other) const;
-    bool operator<=(const Fixed& other) const;
-    bool operator==(const Fixed& other) const;
-    bool operator!=(const Fixed& other) const;
+
+bool Fixed::operator<(const Fixed& other) const
+{
+    return this->_value < other._value;
+}
+
+bool Fixed::operator>=(const Fixed& other) const
+{
+    return this->_value >= other._value;
+}
+
+bool Fixed::operator<=(const Fixed& other) const
+{
+    return this->_value <= other._value;
+}
+
+bool Fixed::operator==(const Fixed& other) const
+{
+    return this->_value == other._value;
+}
+
+bool Fixed::operator!=(const Fixed& other) const
+{
+    return this->_value != other._value;
+}
+
+Fixed Fixed::operator+(const Fixed& other) const
+{
+    Fixed result;
+    result.setRawBits(this->_value + other._value);
+    return result;
+}
+
+Fixed Fixed::operator-(const Fixed& other) const
+{
+    Fixed result;
+    result.setRawBits(this->_value - other._value);
+    return result;
+}
+
+Fixed Fixed::operator*(const Fixed& other) const
+{
+    Fixed result;
+    long tmp = (long)this->_value * (long)other._value;
+    result.setRawBits(tmp >> _fractionalBits);
+    return result;
+}
+
+Fixed Fixed::operator/(const Fixed& other) const
+{
+    Fixed result;
+    long tmp = ((long)this->_value << _fractionalBits) / other._value;
+    result.setRawBits(tmp);
+    return result;
+}
+
+Fixed& Fixed::operator++()
+{
+    _value += 1;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed temp(*this);
+    _value += 1;
+    return temp;
+}
+
+Fixed& Fixed::operator--()
+{
+    _value -= 1;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed temp(*this);
+    _value -= 1;
+    return temp;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+    return (a < b) ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+    return (a < b) ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+    return (a > b) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+    return (a > b) ? a : b;
+}
+
+
+
 

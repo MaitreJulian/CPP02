@@ -14,5 +14,8 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(NAME)
+re:
+	rm -f $(OBJ) $(NAME)
+	make
 
 .PHONY: all clean
