@@ -14,6 +14,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -24,6 +25,7 @@ private:
 public:
     Fixed();                    // Constructeur par défaut
     Fixed(const int);           // Constructeur avec un int
+    Fixed(const float);         // Constructeur avec un float
     Fixed(const Fixed& other);  // Constructeur de copie
     
     Fixed& operator=(const Fixed& other); // Opérateur d’affectation

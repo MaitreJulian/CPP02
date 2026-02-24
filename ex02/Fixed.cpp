@@ -16,22 +16,29 @@ Fixed::Fixed () : _value(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
-Fixed::Fixed (int n)
+
+Fixed::Fixed(const int n)
 {
-    this->_value = n;
+    std::cout << "Your constructor has been called with int n = '" << n << "'" << std::endl; 
+    _value = n << _fractionalBits;
 }
 
-Fixed::Fixed (const Fixed& other)
+Fixed::Fixed(const float n)
+{
+    std::cout << "Your constructor has been called with float n = '" << n << "'" << std::endl; 
+    _value = roundf(n *( 1 << _fractionalBits));
+}
+
+Fixed::Fixed (const Fixed& other):_value(other._value)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
-        this->_value = other.   _value;
+        this->_value = other._value;
     return *this;
 }
 
@@ -47,7 +54,6 @@ void Fixed::setRawBits(int const raw)
 
 int Fixed::getRawBits() const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return _value;
 }
 
@@ -172,7 +178,3 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 {
     return (a > b) ? a : b;
 }
-
-
-
-

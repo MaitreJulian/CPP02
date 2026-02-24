@@ -1,18 +1,35 @@
-CXX = c++
-CXXFLAGS = -Iinclude -Wall -Wextra -Werror -std=c++98
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/02/13 16:10:48 by jvenkata          #+#    #+#              #
+#    Updated: 2026/02/13 16:10:48 by jvenkata         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = MFC_OCF
 SRC = main.cpp Fixed.cpp
+C = c++
+CFLAGS = -Iinclude -Wall -Wextra -Werror -g -std=c++98
 OBJ = $(SRC:.cpp=.o)
-NAME = MSC_OCF
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(OBJ) -o $@
+	$(C) $(OBJ) -o $@
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(C) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(NAME)
+	rm -f $(OBJ)
 
-.PHONY: all clean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

@@ -21,20 +21,17 @@ Fixed::Fixed(const int n)
 {
     std::cout << "Your constructor has been called with int n = '" << n << "'" << std::endl; 
     _value = n << _fractionalBits;
-    std::cout << "Apres le décalage, _value = " << _value  << std::endl;
 }
 
 Fixed::Fixed(const float n)
 {
     std::cout << "Your constructor has been called with float n = '" << n << "'" << std::endl; 
     _value = roundf(n *( 1 << _fractionalBits));
-    std::cout << "Apres le décalage, _value = " << _value  << std::endl;
 }
 
-Fixed::Fixed (const Fixed& other)
+Fixed::Fixed (const Fixed& other) : _value(other._value)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
